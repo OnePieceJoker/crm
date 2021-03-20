@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -39,6 +40,13 @@ public class RedioStationController {
     public R queryBookInfoByBookId(@PathVariable("id") @ApiParam(name = "id", value = "书籍id") Integer id) {
         Book book = service.queryBookInfoByBookId(id);
         return R.ok().data("book", book);
+    }
+
+    @ApiOperation(value = "更新章节对应的音频地址")
+    @PostMapping("/chapters/update")
+    public R updateAudioUrlByChapterId(@RequestParam("chapterId") Integer chapterId, @RequestParam("audioUrl") String audioUrl) {
+        service.updateAudioUrlByChapterId(chapterId, audioUrl);
+        return R.ok();
     }
 
 }

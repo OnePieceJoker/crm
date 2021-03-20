@@ -1,6 +1,7 @@
 package com.joker.crm.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -39,5 +40,11 @@ public class PopularRedioMapperTest {
         Book result = mapper.queryBookInfoByBookId(1);
         System.out.println(result.toString());
         assertEquals(result.getId(), 1);
+    }
+
+    @Test
+    public void testUpdateAudioUrlByChapterId() {
+        mapper.updateAudioUrlByChapterId(1, "http://demo.url");
+        assertTrue( true );
     }
 }

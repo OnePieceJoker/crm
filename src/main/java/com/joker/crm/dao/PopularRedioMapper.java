@@ -8,6 +8,7 @@ import com.joker.crm.vo.PopularRedio;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface PopularRedioMapper {
     
@@ -19,4 +20,7 @@ public interface PopularRedioMapper {
 
     @Select("select * from books where id = #{id}")
     Book queryBookInfoByBookId(@Param("id") Integer id);
+
+    @Update("update chapters set audio_url = #{audioUrl} where id = #{id}")
+    void updateAudioUrlByChapterId(@Param("id") Integer id, @Param("audioUrl") String audioUrl);
 }

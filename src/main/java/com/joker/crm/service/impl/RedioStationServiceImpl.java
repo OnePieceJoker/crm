@@ -29,5 +29,10 @@ public class RedioStationServiceImpl implements RedioStationService {
         book.setChapters(chapters);
         return book;
     }
+
+    @Override
+    public void updateAudioUrlByChapterId(Integer id, String url) {
+        mapper.updateAudioUrlByChapterId(id, url);
+    }
     
 }

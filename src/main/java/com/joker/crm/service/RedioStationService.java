@@ -10,4 +10,6 @@ public interface RedioStationService {
     List<PopularRedio> queryPopularRedioList();
     
     Book queryBookInfoByBookId(Integer id);
+
+    void updateAudioUrlByChapterId(Integer id, String url);
 }
