@@ -2,22 +2,6 @@ server:
     port: 18080
 
 spring:
-    redis:
-        database: 0
-        host: 127.0.0.1
-        port: 6379
-        password:
-        timeout: 3000
-        lettuce:
-            pool:
-                # 最大连接数
-                max-active: 8
-                # 最大阻塞等待时间
-                max-wait: -1
-                # 最大空闲连接
-                max-idle: 8
-                # 最小空闲连接
-                min-idle: 0
     datasource:
         url: jdbc:mysql://172.17.0.3:3306/listencode?characterEncoding=utf8&useSSL=true&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&serverTimezone=Asia/Shanghai&useAffectedRows=true
         username: root
