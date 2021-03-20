@@ -47,4 +47,25 @@ public class PopularRedioMapperTest {
         mapper.updateAudioUrlByChapterId(1, "http://demo.url");
         assertTrue( true );
     }
+
+    @Test
+    public void testQueryBooksByBookName() {
+        List<PopularRedio> result = mapper.queryBooksByBookName("天");
+        System.out.println(result.toString());
+        assertTrue( true );
+    }
+
+    @Test
+    public void testQueryBooksByAuthor() {
+        List<PopularRedio> result = mapper.queryBooksByAuthor("求魔");
+        System.out.println(result.toString());
+        assertTrue( true );
+    }
+
+    @Test
+    public void testQueryBooksByAuthorOrBookName() {
+        List<PopularRedio> result = mapper.queryBooksByAuthorOrBookName("忘语");
+        System.out.println(result.toString());
+        assertTrue( true );
+    }
 }

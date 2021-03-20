@@ -23,4 +23,14 @@ public interface PopularRedioMapper {
 
     @Update("update chapters set audio_url = #{audioUrl} where id = #{id}")
     void updateAudioUrlByChapterId(@Param("id") Integer id, @Param("audioUrl") String audioUrl);
+
+    @Select("select * from books where name like CONCAT('%', #{name})")
+    List<PopularRedio> queryBooksByBookName(@Param("name") String bookName);
+
+    @Select("select * from books where author like CONCAT('%', #{author})")
+    List<PopularRedio> queryBooksByAuthor(@Param("author") String author);
+
+
+    @Select("select * from books where author like CONCAT('%', #{condition}) or name like CONCAT('%', #{condition})")
+    List<PopularRedio> queryBooksByAuthorOrBookName(@Param("condition") String condition);
 }

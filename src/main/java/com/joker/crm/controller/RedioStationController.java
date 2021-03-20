@@ -3,6 +3,7 @@ package com.joker.crm.controller;
 import java.util.List;
 
 import com.joker.crm.common.api.R;
+import com.joker.crm.common.constant.ResultCodeEnum;
 import com.joker.crm.dao.PopularRedioMapper;
 import com.joker.crm.entity.Book;
 import com.joker.crm.entity.Chapter;
@@ -38,15 +39,32 @@ public class RedioStationController {
     @ApiOperation(value = "获取资源详细章节")
     @PostMapping("/books/{id}")
     public R queryBookInfoByBookId(@PathVariable("id") @ApiParam(name = "id", value = "书籍id") Integer id) {
-        Book book = service.queryBookInfoByBookId(id);
-        return R.ok().data("book", book);
+        Book book;
+        try {
+            book = service.queryBookInfoByBookId(id);
+            return R.ok().data("book", book);
+        } catch (IllegalArgumentException e) {
+            return R.error().code(ResultCodeEnum.NOT_FOUND.getCode()).message(e.getMessage());
+        }
     }
 
     @ApiOperation(value = "更新章节对应的音频地址")
     @PostMapping("/chapters/update")
-    public R updateAudioUrlByChapterId(@RequestParam("chapterId") Integer chapterId, @RequestParam("audioUrl") String audioUrl) {
+    public R updateAudioUrlByChapterId(
+        @RequestParam("chapterId") @ApiParam(value = "章节id") Integer chapterId, 
+        @RequestParam("audioUrl") @ApiParam(value = "音频地址") String audioUrl
+    ) {
         service.updateAudioUrlByChapterId(chapterId, audioUrl);
         return R.ok();
+    }
+
+    @ApiOperation(value = "通过书名或作者名查询")
+    @PostMapping("/search")
+    public R queryBooksByMultipleConditions(
+        @RequestParam("conditions") @ApiParam(value = "书名或作者名") String condition
+    ) {
+        List<PopularRedio> books = service.queryBooksByAuthorOrBookName(condition);
+        return R.ok().data("books", books);
     }
 
 }
