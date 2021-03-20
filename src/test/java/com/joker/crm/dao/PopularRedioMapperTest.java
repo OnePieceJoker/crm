@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import com.joker.crm.entity.Book;
+import com.joker.crm.entity.Chapter;
 import com.joker.crm.vo.PopularRedio;
 
 import org.junit.jupiter.api.Test;
@@ -22,6 +24,20 @@ public class PopularRedioMapperTest {
     @Test
     public void testQueryPopularRedioList() {
         List<PopularRedio> result = mapper.queryPopularRedioList();
-        assertEquals(result, null);
+        assertEquals(result.size(), 1);
+    }
+
+    @Test
+    public void testQueryChaptersByBookId() {
+        List<Chapter> result = mapper.queryChaptersByBookId(1);
+        System.out.println(result.toString());
+        assertEquals(result.size(), 2);
+    }
+
+    @Test
+    public void testQueryBookInfoByBookId() {
+        Book result = mapper.queryBookInfoByBookId(1);
+        System.out.println(result.toString());
+        assertEquals(result.getId(), 1);
     }
 }

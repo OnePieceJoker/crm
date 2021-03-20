@@ -19,13 +19,11 @@ spring:
                 # 最小空闲连接
                 min-idle: 0
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/listencode?characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&serverTimezone=Asia/Shanghai&useAffectedRows=true
+        url: jdbc:mysql://172.17.0.3:3306/listencode?characterEncoding=utf8&useSSL=true&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&serverTimezone=Asia/Shanghai&useAffectedRows=true
         username: root
         password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
-    mapper-location: classpath:/resources/mapper/*Mapper.xml
-    type-aliases-package: com.joker.crm.vo
     configuration:
         map-underscore-to-camel-case: true

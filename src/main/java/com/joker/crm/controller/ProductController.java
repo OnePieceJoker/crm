@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  *
@@ -24,6 +25,7 @@ import io.swagger.annotations.ApiParam;
 @RestController
 @RequestMapping("/product")
 @Api(tags = "客户管理接口")
+@ApiIgnore
 public class ProductController {
     
     @PostMapping("/queryById/{productId}")
